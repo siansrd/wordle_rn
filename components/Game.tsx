@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { View, Text } from "react-native"
+import { View, StyleSheet } from "react-native"
 import { ANSWER } from "../game/game_config"
 import { addGuess, CheckGuess, createCheckGuess } from "../game/src/game"
 import Grid from "./Grid"
@@ -22,8 +22,7 @@ const Game = () => {
         guesses={guesses}
         answer={ANSWER}
       />
-      <GuessForm submitGuess={submitGuess} />
-      <Text>{gameWon && "You won!"}</Text>
+      {!gameWon && <GuessForm submitGuess={submitGuess} />}
     </View>
   )
 }

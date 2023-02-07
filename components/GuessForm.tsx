@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { TextInput, Text, Button } from "react-native"
+import { TextInput, Text, Button, StyleSheet, View } from "react-native"
 import { WORD_LENGTH } from "../game/game_config"
 import { createCheckWordLength } from "../game/src/form_validation"
 
@@ -25,8 +25,10 @@ const GuessForm = ({ submitGuess }: Props) => {
   const [guess, setGuess] = useState<string>("")
 
   return (
-    <>
+    <View style={styles.formContainer}>
       <TextInput
+        style={styles.input}
+        autoCapitalize={"characters"}
         maxLength={5}
         placeholder="Make a guess"
         value={guess}
@@ -38,8 +40,21 @@ const GuessForm = ({ submitGuess }: Props) => {
         title="Guess"
       />
       {error}
-    </>
+    </View>
   )
 }
 
 export default GuessForm
+
+const styles = StyleSheet.create({
+  formContainer: {
+    marginVertical: 30,
+  },
+  input: {
+    height: 40,
+    borderColor: "grey",
+    borderWidth: 1,
+    marginBottom: 10,
+    paddingHorizontal: 10,
+  },
+})
